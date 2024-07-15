@@ -13,11 +13,11 @@ export class AlunosComponent implements OnInit {
   public titulo = 'Alunos'
   
   public alunos = [
-    {nome: 'Maria', idade: 18}, 
-    {nome: 'João',  idade: 21},
-    {nome: 'Ana', idade: 28},
-    {nome: 'Pedro', idade: 15}, 
-    {nome: 'Carla', idade: 30}
+    { id: 1, nome: "Ana", sobrenome: "Silva", telefone: "(11) 91234-5678" },
+    { id: 2, nome: "Bruno", sobrenome: "Oliveira", telefone: "(21) 98765-4321" },
+    { id: 3, nome: "Carlos", sobrenome: "Santos", telefone: "(31) 92345-6789" },
+    { id: 4, nome: "Daniela", sobrenome: "Pereira", telefone: "(41) 93456-7890" },
+    { id: 5, nome: "Eduardo", sobrenome: "Costa", telefone: "(51) 94567-8901" }
   ]
   
   constructor() {
