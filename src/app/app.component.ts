@@ -5,11 +5,12 @@ import { ProfessoresComponent } from './professores/professores.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
+import { TituloComponent } from './titulo/titulo.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AlunosComponent, ProfessoresComponent, PerfilComponent, DashboardComponent, NavComponent, RouterLink],
+  imports: [RouterOutlet, AlunosComponent, ProfessoresComponent, PerfilComponent, DashboardComponent, TituloComponent, NavComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,15 +1,16 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TituloComponent } from '../titulo/titulo.component';
 
 @Component({
   selector: 'app-alunos',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, TituloComponent],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.css'
 })
 export class AlunosComponent implements OnInit {
-  titulo = 'Alunos'
+  public titulo = 'Alunos'
   
   public alunos = [
     {nome: 'Maria', idade: 18}, 
