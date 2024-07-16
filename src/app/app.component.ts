@@ -10,7 +10,16 @@ import { TituloComponent } from './titulo/titulo.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AlunosComponent, ProfessoresComponent, PerfilComponent, DashboardComponent, TituloComponent, NavComponent, RouterLink],
+  imports: [
+    RouterOutlet, 
+    AlunosComponent, 
+    ProfessoresComponent, 
+    PerfilComponent, 
+    DashboardComponent, 
+    TituloComponent, 
+    NavComponent, 
+    RouterLink,
+    ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
