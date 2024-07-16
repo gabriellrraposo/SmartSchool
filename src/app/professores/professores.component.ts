@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
+import { Professor } from '../models/Professor';
 
 @Component({
   selector: 'app-professores',
@@ -11,7 +12,7 @@ import { TituloComponent } from '../titulo/titulo.component';
 })
 export class ProfessoresComponent implements OnInit {
   public titulo = 'Professores'
-  public profSelecionado : string
+  public profSelecionado : Professor | null
 
   professores = [
     { id: 1, nome: "Fernanda", sobrenome: "Gomes", disciplina: "Matemática" },
@@ -21,12 +22,12 @@ export class ProfessoresComponent implements OnInit {
     { id: 5, nome: "Juliana", sobrenome: "Ferreira", disciplina: "Química" }
   ]
 
-  profSelect(prof : any) {
-    this.profSelecionado = prof.nome
+  profSelect(prof : Professor) {
+    this.profSelecionado = prof
   }
 
   voltar() {
-    this.profSelecionado = ''
+    this.profSelecionado = null
   }
 
   constructor() {}

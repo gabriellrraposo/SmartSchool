@@ -1,7 +1,7 @@
 <div *ngIf="profSelecionado">
   <div class="d-flex justify-content-between">
     <div>
-      <app-titulo [titulo]="'Professor(a): ' + profSelecionado"></app-titulo>
+      <app-titulo [titulo]="'Professor(a): ' + profSelecionado.nome"></app-titulo>
     </div>
     <div>
       <button class="btn btn-warning" (click)="voltar()">Voltar</button>
