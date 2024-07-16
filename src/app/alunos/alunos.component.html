@@ -1,7 +1,7 @@
 <div *ngIf="alunoSelecionado">
   <div class="d-flex justify-content-between">
     <div>
-      <app-titulo [titulo]="'Aluno(a): ' + alunoSelecionado.nome"></app-titulo>
+      <app-titulo [titulo]="'Aluno: ' + alunoSelecionado.id"></app-titulo>
     </div>
     <div>
       <button class="btn btn-warning" (click)="voltar()">Voltar</button>
@@ -11,15 +11,15 @@
   <form>
     <div class="form-group">
       <label for="formGroupExampleInput">Nome</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" value="{{alunoSelecionado.nome}}">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Sobrenome</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" value="{{alunoSelecionado.sobrenome}}">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Telefone</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" value="{{alunoSelecionado.telefone}}">
     </div>
   </form>
 </div>
