@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
+import { Aluno } from '../models/Aluno'
 
 @Component({
   selector: 'app-alunos',
@@ -11,7 +12,7 @@ import { TituloComponent } from '../titulo/titulo.component';
 })
 export class AlunosComponent implements OnInit {
   public titulo = 'Alunos'
-  public alunoSelecionado : string
+  public alunoSelecionado : Aluno | null
   
   public alunos = [
     { id: 1, nome: "Ana", sobrenome: "Silva", telefone: "(11) 91234-5678" },
@@ -21,13 +22,17 @@ export class AlunosComponent implements OnInit {
     { id: 5, nome: "Eduardo", sobrenome: "Costa", telefone: "(51) 94567-8901" }
   ]
 
-  alunoSelect(aluno : any) {
-    this.alunoSelecionado = aluno.nome
+  alunoSelect(aluno : Aluno) {
+    this.alunoSelecionado = aluno
   }
 
-  alunoDeselect() {
-    this.alunoSelecionado = ''
+  voltar() {
+    this.alunoSelecionado = null
   }
+
+  // alunoDeselect() {
+  //   this.alunoSelecionado = null
+  // }
 
   // selectAndDeselect(aluno : any) {
   //   if (this.alunoSelecionado == aluno.nome) {
@@ -36,10 +41,6 @@ export class AlunosComponent implements OnInit {
   //     this.alunoSelect(aluno)
   //   }
   // }
-
-  voltar() {
-    this.alunoSelecionado = ''
-  }
   
   constructor() {
 
