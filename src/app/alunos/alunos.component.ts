@@ -29,17 +29,17 @@ export class AlunosComponent implements OnInit {
     this.alunoSelecionado = ''
   }
 
-  selectAndDeselect(aluno : any) {
-    if (this.alunoSelecionado == aluno.nome) {
-      this.alunoDeselect()
-    } else {
-      this.alunoSelect(aluno)
-    }
-  }
-
-  // voltar() {
-  //   this.alunoSelecionado = ''
+  // selectAndDeselect(aluno : any) {
+  //   if (this.alunoSelecionado == aluno.nome) {
+  //     this.alunoDeselect()
+  //   } else {
+  //     this.alunoSelect(aluno)
+  //   }
   // }
+
+  voltar() {
+    this.alunoSelecionado = ''
+  }
   
   constructor() {
 
