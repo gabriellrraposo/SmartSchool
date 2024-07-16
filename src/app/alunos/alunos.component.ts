@@ -1,16 +1,17 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
 
 @Component({
   selector: 'app-alunos',
   standalone: true,
-  imports: [NgFor, TituloComponent],
+  imports: [NgFor, TituloComponent, NgIf],
   templateUrl: './alunos.component.html',
   styleUrl: './alunos.component.css'
 })
 export class AlunosComponent implements OnInit {
   public titulo = 'Alunos'
+  public alunoSelecionado : string
   
   public alunos = [
     { id: 1, nome: "Ana", sobrenome: "Silva", telefone: "(11) 91234-5678" },
@@ -19,6 +20,26 @@ export class AlunosComponent implements OnInit {
     { id: 4, nome: "Daniela", sobrenome: "Pereira", telefone: "(41) 93456-7890" },
     { id: 5, nome: "Eduardo", sobrenome: "Costa", telefone: "(51) 94567-8901" }
   ]
+
+  alunoSelect(aluno : any) {
+    this.alunoSelecionado = aluno.nome
+  }
+
+  alunoDeselect() {
+    this.alunoSelecionado = ''
+  }
+
+  selectAndDeselect(aluno : any) {
+    if (this.alunoSelecionado == aluno.nome) {
+      this.alunoDeselect()
+    } else {
+      this.alunoSelect(aluno)
+    }
+  }
+
+  // voltar() {
+  //   this.alunoSelecionado = ''
+  // }
   
   constructor() {
 
