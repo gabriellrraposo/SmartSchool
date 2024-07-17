@@ -1,49 +1,54 @@
-<div *ngIf="profSelecionado">
-  <div class="d-flex justify-content-between">
-    <div>
-      <app-titulo [titulo]="'Professor: ' + profSelecionado.id"></app-titulo>
+<div class="d-flex justify-content-between">
+  <div *ngIf="profSelecionado" class="col-sm-5">
+    <div class="d-flex justify-content-between">
+      <div>
+        <app-titulo [titulo]="'Professor: ' + profSelecionado.id"></app-titulo>
+      </div>
+      <div>
+        <button class="btn btn-outline-danger border-2" (click)="voltar()">Fechar</button>
+      </div>
     </div>
-    <div>
-      <button class="btn btn-warning" (click)="voltar()">Voltar</button>
-    </div>
+    
+    <form>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Nome</label>
+        <input type="text" class="form-control" value="{{profSelecionado.nome}}">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Sobrenome</label>
+        <input type="text" class="form-control" value="{{profSelecionado.sobrenome}}">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Disciplina</label>
+        <input type="text" class="form-control" value="{{profSelecionado.disciplina}}">
+      </div>
+      <div>
+        <button class="btn btn-success">Enviar</button>
+      </div>
+    </form>
   </div>
   
-  <form>
-    <div class="form-group">
-      <label for="formGroupExampleInput">Nome</label>
-      <input type="text" class="form-control" value="{{profSelecionado.nome}}">
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Sobrenome</label>
-      <input type="text" class="form-control" value="{{profSelecionado.sobrenome}}">
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Disciplina</label>
-      <input type="text" class="form-control" value="{{profSelecionado.disciplina}}">
-    </div>
-  </form>
-</div>
-
-<div *ngIf="!profSelecionado">
-  <app-titulo [titulo]="titulo"></app-titulo>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Sobrenome</th>
-        <th scope="col">Disciplina</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let prof of professores" (click)="profSelect(prof)" style="cursor: pointer;">
-        <th scope="row">{{prof.id}}</th>
-        <td>{{prof.nome}}</td>
-        <td>{{prof.sobrenome}}</td>
-        <td>{{prof.disciplina}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div [ngClass]="{'col-sm-6': profSelecionado, 'col-sm-12': !profSelecionado}">
+    <app-titulo [titulo]="titulo"></app-titulo>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Sobrenome</th>
+          <th scope="col">Disciplina</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prof of professores" (click)="profSelect(prof)" style="cursor: pointer;">
+          <th scope="row">{{prof.id}}</th>
+          <td>{{prof.nome}}</td>
+          <td>{{prof.sobrenome}}</td>
+          <td>{{prof.disciplina}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 

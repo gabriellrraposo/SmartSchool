@@ -1,12 +1,13 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
 import { Professor } from '../models/Professor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-professores',
   standalone: true,
-  imports: [NgFor, TituloComponent, NgIf],
+  imports: [NgFor, TituloComponent, NgIf, NgClass, FormsModule, ReactiveFormsModule],
   templateUrl: './professores.component.html',
   styleUrl: './professores.component.css'
 })
