@@ -2,7 +2,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
 import { Aluno } from '../models/Aluno'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alunos',
@@ -14,6 +14,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class AlunosComponent implements OnInit {
   public titulo = 'Alunos'
   public alunoSelecionado : Aluno | null
+  public alunoForm : FormGroup
+
+  constructor(private fb: FormBuilder) {
+    this.criarForm()
+  }
+
+  ngOnInit(): void {
+    
+  }
+
+  criarForm() {
+    this.alunoForm = this.fb.group({
+      nome: ['', Validators.required],
+      sobrenome: ['', Validators.required],
+      telefone: ['', Validators.required]
+    })
+  }
   
   public alunos = [
     { id: 1, nome: "Ana", sobrenome: "Silva", telefone: "(11) 91234-5678" },
@@ -25,10 +42,15 @@ export class AlunosComponent implements OnInit {
 
   alunoSelect(aluno : Aluno) {
     this.alunoSelecionado = aluno
+    this.alunoForm.patchValue(aluno)
   }
 
   voltar() {
     this.alunoSelecionado = null
+  }
+
+  alunoSubmit() {
+    console.log(this.alunoForm.value)
   }
 
   // alunoDeselect() {
@@ -43,11 +65,5 @@ export class AlunosComponent implements OnInit {
   //   }
   // }
   
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
-    
-  }
+  
 }
