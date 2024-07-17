@@ -2,7 +2,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
 import { Professor } from '../models/Professor';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-professores',
@@ -14,6 +14,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class ProfessoresComponent implements OnInit {
   public titulo = 'Professores'
   public profSelecionado : Professor | null
+  public profForm : FormGroup
+
+  constructor(private fb: FormBuilder) {
+    this.criarForm()
+  }
+
+
+  ngOnInit(): void {
+    
+  }
+
+  criarForm() {
+    this.profForm = this.fb.group({
+      nome: ['', Validators.required],
+      sobrenome: ['', Validators.required],
+      disciplina: ['', Validators.required],
+    })
+  }
 
   professores = [
     { id: 1, nome: "Fernanda", sobrenome: "Gomes", disciplina: "Matemática" },
@@ -25,14 +43,16 @@ export class ProfessoresComponent implements OnInit {
 
   profSelect(prof : Professor) {
     this.profSelecionado = prof
+    this.profForm.patchValue(prof)
+  }
+
+  profSubmit() {
+    console.log(this.profForm.value)
   }
 
   voltar() {
     this.profSelecionado = null
   }
 
-  constructor() {}
-  ngOnInit(): void {
-    
-  }
+
 }

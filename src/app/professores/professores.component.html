@@ -9,21 +9,22 @@
       </div>
     </div>
     
-    <form>
+    <form [formGroup]="profForm" (submit)="profSubmit()">
       <div class="form-group">
         <label for="formGroupExampleInput">Nome</label>
-        <input type="text" class="form-control" value="{{profSelecionado.nome}}">
+        <input type="text" class="form-control" formControlName="nome">
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Sobrenome</label>
-        <input type="text" class="form-control" value="{{profSelecionado.sobrenome}}">
+        <input type="text" class="form-control" formControlName="sobrenome">
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Disciplina</label>
-        <input type="text" class="form-control" value="{{profSelecionado.disciplina}}">
+        <input type="text" class="form-control" formControlName="disciplina">
       </div>
-      <div>
-        <button class="btn btn-success">Enviar</button>
+      <div class="form-group">
+        <hr>
+        <button class="btn btn-success" [disabled]="!profForm.valid">Enviar</button>
       </div>
     </form>
   </div>
