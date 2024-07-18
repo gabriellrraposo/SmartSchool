@@ -1,22 +1,27 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
 import { Aluno } from '../models/Aluno'
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { ModalComponent } from '../modal/modal/modal.component';
+import { ProfessoresComponent } from '../professores/professores.component';
 
 @Component({
   selector: 'app-alunos',
   standalone: true,
-  imports: [NgFor, TituloComponent, NgIf, NgClass, FormsModule, ReactiveFormsModule],
+  imports: [NgFor, TituloComponent, NgIf, NgClass, FormsModule, ReactiveFormsModule, ModalComponent, ProfessoresComponent],
   templateUrl: './alunos.component.html',
-  styleUrl: './alunos.component.css'
+  styleUrl: './alunos.component.css',
+  providers: [BsModalService]
 })
 export class AlunosComponent implements OnInit {
   public titulo = 'Alunos'
   public alunoSelecionado : Aluno | null
   public alunoForm : FormGroup
+  public modalRef: BsModalRef
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private modalService: BsModalService) {
     this.criarForm()
   }
 
@@ -44,13 +49,17 @@ export class AlunosComponent implements OnInit {
     this.alunoSelecionado = aluno
     this.alunoForm.patchValue(aluno)
   }
+  
+  alunoSubmit() {
+    console.log(this.alunoForm.value)
+  }
 
   voltar() {
     this.alunoSelecionado = null
   }
 
-  alunoSubmit() {
-    console.log(this.alunoForm.value)
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template)
   }
 
   // alunoDeselect() {
@@ -64,6 +73,4 @@ export class AlunosComponent implements OnInit {
   //     this.alunoSelect(aluno)
   //   }
   // }
-  
-  
 }
