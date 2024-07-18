@@ -1,22 +1,28 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { TituloComponent } from '../titulo/titulo.component';
 import { Professor } from '../models/Professor';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { ModalComponent } from '../modal/modal/modal.component';
+import { AlunosComponent } from '../alunos/alunos.component';
+
 
 @Component({
   selector: 'app-professores',
   standalone: true,
-  imports: [NgFor, TituloComponent, NgIf, NgClass, FormsModule, ReactiveFormsModule],
+  imports: [NgFor, TituloComponent, NgIf, NgClass, FormsModule, ReactiveFormsModule, ModalComponent],
   templateUrl: './professores.component.html',
-  styleUrl: './professores.component.css'
+  styleUrl: './professores.component.css',
+  providers: [BsModalService]
 })
 export class ProfessoresComponent implements OnInit {
   public titulo = 'Professores'
   public profSelecionado : Professor | null
   public profForm : FormGroup
+  public modalRef: BsModalRef
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private modalService: BsModalService) {
     this.criarForm()
   }
 
@@ -54,5 +60,7 @@ export class ProfessoresComponent implements OnInit {
     this.profSelecionado = null
   }
 
-
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template)
+  }
 }
